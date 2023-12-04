@@ -18,12 +18,12 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS_DEPLOY").split(',')
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS_DEPLOY").split(",")
 
 
-#cors
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS_DEPLOY").split(',')
-CORS_ALLOWED_WHITELIST = os.getenv("CORS_ALLOWED_WHITELIST_DEPLOY").split(',')
+# cors
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS_DEPLOY").split(",")
+CORS_ALLOWED_WHITELIST = os.getenv("CORS_ALLOWED_WHITELIST_DEPLOY").split(",")
 
 # Application definition
 
@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     "user",
     "store",
     "order",
@@ -93,9 +92,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # }
 
 
-DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-}
+DATABASES = {"default": dj_database_url.parse(os.getenv("DATABASE_URL"))}
 
 
 # Password validation
@@ -133,9 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR / "static_root"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    BASE_DIR / "static",
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
