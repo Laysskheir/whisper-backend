@@ -30,11 +30,20 @@ class BrandAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
 
+
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
-    list_display = ["name"]
+    list_display = ["name", "type_of_item"]
 
+    def type_of_item(self, obj):
+        if isinstance(obj.name, str):
+            return "Clothes"
+        elif isinstance(obj.name, int):
+            return "Shoes"
+        else:
+            return "Unknown"
 
+    type_of_item.short_description = "Type of Item"
 @admin.register(Color)
 class ColorAdmin(admin.ModelAdmin):
     list_display = ["name", "color_preview"]
