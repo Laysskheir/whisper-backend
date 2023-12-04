@@ -25,7 +25,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS_DEPLOY").split(",")
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS_DEPLOY").split(",")
 CORS_ALLOWED_WHITELIST = os.getenv("CORS_ALLOWED_WHITELIST_DEPLOY").split(",")
 
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS_DEPLOY').split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS_DEPLOY").split(",")
 
 # Application definition
 
