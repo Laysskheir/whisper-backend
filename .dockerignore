@@ -1,0 +1,28 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore development and IDE-specific files
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+
+# Ignore local configuration files
+.env
+.env.local
+.env.dev
+.env.prod
+
+# Ignore Docker-related files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Ignore version control files
+.git
+.gitignore
