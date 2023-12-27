@@ -73,3 +73,5 @@ class ProductSerializer(serializers.ModelSerializer):
 #         items = obj.orderitem_set.all()
 #         serializer = OrderSerializer(items, many=True)
 #         return serializer.data
+
+
