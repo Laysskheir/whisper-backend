@@ -13,7 +13,6 @@ class SliderAdmin(admin.ModelAdmin):
 
     slider_image.short_description = "Slider"
 
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ["name", "image_category"]
