@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from .models import Product, Slider, Category, ProductImages
 from .serializers import *
 from rest_framework import status
-from django.shortcuts import get_object_or_404  
+from django.shortcuts import get_object_or_404
+
 
 @api_view(["GET"])
 def home(request):
@@ -12,39 +13,40 @@ def home(request):
         product_serializer = ProductSerializer(products, many=True)
 
         sliders = Slider.objects.all()
-        sliders_serializer = SliderSerializer(sliders, many=True)  
+        sliders_serializer = SliderSerializer(sliders, many=True)
 
         categories = Category.objects.all()
         categories_serializer = CategorySerializer(categories, many=True)
 
         brands = Brand.objects.all()
         brands_serializer = BrandSerializer(brands, many=True)
-        
+
         data = {
             "products": product_serializer.data,
             "sliders": sliders_serializer.data,
             "categories": categories_serializer.data,
             "brands": brands_serializer.data,
-
         }
 
-        return Response(data, status=status.HTTP_200_OK)  
+        return Response(data, status=status.HTTP_200_OK)
+
 
 @api_view(["GET"])
 def product_list(request):
     if request.method == "GET":
         products = Product.objects.all()
         colors = Color.objects.all()
-        
+
         product_serializer = ProductSerializer(products, many=True)
         color_serializer = ColorSerializer(colors, many=True)
 
         data = {
-            'products': product_serializer.data,
-            'colors': color_serializer.data,
+            "products": product_serializer.data,
+            "colors": color_serializer.data,
         }
-         
+
         return Response(data, status=status.HTTP_200_OK)
+
 
 @api_view(["GET"])
 def collections(request, slug):
@@ -52,7 +54,9 @@ def collections(request, slug):
         try:
             category = Category.objects.get(slug=slug)
         except Category.DoesNotExist:
-            return Response({"error": "Category not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(
+                {"error": "Category not found"}, status=status.HTTP_404_NOT_FOUND
+            )
 
         products = Product.objects.filter(category=category)
         serializer = ProductSerializer(products, many=True)
@@ -76,4 +80,3 @@ def product_detail(request, slug):
             },
             status=status.HTTP_200_OK,
         )
-

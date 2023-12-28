@@ -39,6 +39,18 @@ class UserCreateSerializer(serializers.ModelSerializer):
         return user
 
 
+class UserLoggedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "bio",
+        )
+
+
 class ChangePasswordSerializer(serializers.Serializer):
     password1 = serializers.CharField(required=True, write_only=True, min_length=5)
     password2 = serializers.CharField(required=True, write_only=True, min_length=5)
@@ -71,19 +83,11 @@ class SearchUserSerializer(serializers.ModelSerializer):
     #     return obj.orders.count()
 
 
-class UserLoggedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = (
-            "id",
-            "email",
-            "first_name",
-            "last_name",
-            "bio",
-        )
 
 
 # ==================== AUTH ====================
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     # return a dictionary data with keys "access" and "refresh"
     pass
+
+
