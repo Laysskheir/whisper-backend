@@ -9,7 +9,7 @@ class SliderAdmin(admin.ModelAdmin):
     list_filter = ["is_active"]
 
     def slider_image(self, obj):
-        return format_html('<img src="{}" width="100" height="50" />', obj.image.url)
+        return format_html('<img src="{}" width="100" height="50" style="border: 2px solid #000;" />', obj.image.url)
 
     slider_image.short_description = "Slider"
 
@@ -19,7 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
     def image_category(self, obj):
-        return format_html('<img src="{}" width="50" height="50" />', obj.image.url)
+        return format_html('<img src="{}" width="50" height="50" style="border: 2px solid #000;" />', obj.image.url)
 
     image_category.short_description = "Image"
 
@@ -69,7 +69,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImagesInline]
 
     def display_image(self, obj):
-        return format_html('<img src="{}" width="50" height="50" />', obj.image.url)
+        return format_html('<img src="{}" width="50" height="50" style="border: 2px solid #000;" />', obj.image.url)
 
     display_image.short_description = "Image"
 
