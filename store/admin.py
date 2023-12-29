@@ -38,9 +38,9 @@ class SizeAdmin(admin.ModelAdmin):
 class ColorAdmin(admin.ModelAdmin):
     list_display = ["name", "color_preview"]
 
-    def color_preview(self, obj):
+    def color_preview(self, obj): 
         return format_html(
-            '<div style="width: 30px; height: 30px; border-radius: 50%; background-color: {};"></div>',
+            '<div style="width: 30px; height: 30px; border-radius: 50%; background-color: {}; border: 2px solid #000;"></div>',
             obj.name,
         )
 
@@ -77,7 +77,7 @@ class ProductAdmin(admin.ModelAdmin):
         colors = obj.colors.all()
         # Generate color  previews
         color_info = [
-            f'<div style="display: inline-block; margin-right: 5px; width: 30px; height: 30px; border-radius: 50%; background-color: {color.name};"></div> '
+            f'<div style="display: inline-block; margin-right: 5px; width: 30px; height: 30px; border-radius: 50%; background-color: {color.name}; border: 2px solid #000;"></div> '
             for color in colors
         ]
         return format_html(" ".join(color_info))
